@@ -96,5 +96,10 @@
                 </tbody>
             </table>
         </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                {{$users->links()}}
+            </div>
+        </div>
     </div>
 @endsection

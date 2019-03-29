@@ -11,7 +11,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password','address','phone','status','avatar'
     ];
 
     protected $guarded=['id'];
@@ -24,4 +24,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'user_id', 'id');
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
 }
