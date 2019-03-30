@@ -151,3 +151,7 @@ Route::get('/sync', function () {
 
    return "success";
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
