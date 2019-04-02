@@ -15,8 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('users', 'UserController');
-Route::resource('posts', 'PostController');
+Route::middleware(['auth','role'])->group(function (){
+
+    Route::resource('users', 'UserController');
+    Route::resource('posts', 'PostController');
+
+});
+
+Route::middleware(['auth'])->group(function ()
+{
+    Route::get('users/{user}', 'UserController@show')->name('users.show');
+    Route::get('posts', 'PostController@index')->name('posts.index');
+    Route::get('/posts/{post}','PostController@show')->name('posts.show');
+});
+
 
 use App\User;
 use App\Profile;
